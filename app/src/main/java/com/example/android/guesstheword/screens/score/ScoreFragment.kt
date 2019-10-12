@@ -58,12 +58,15 @@ class ScoreFragment : Fragment() {
             binding.scoreText.text = score.toString()
         })
 
-        binding.playAgainButton.setOnClickListener { onPlayAgain() }
+        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+            if (playAgain) {
+                findNavController().navigate(ScoreFragmentDirections.actionRestart())
+                viewModel.onPlayAgainComplete()
+            }
+        })
+
+        binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
 
         return binding.root
-    }
-
-    private fun onPlayAgain() {
-        findNavController().navigate(ScoreFragmentDirections.actionRestart())
     }
 }
