@@ -1,5 +1,8 @@
 package com.example.android.guesstheword.screens.score
 
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
